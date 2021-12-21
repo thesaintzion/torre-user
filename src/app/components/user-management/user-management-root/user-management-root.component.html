@@ -1,0 +1,9 @@
+<main>
+    <div class="main-inner-con">
+        <app-search-user (handleOnSearch)="handleOnSearch($event[0])"></app-search-user>
+        <section class="users-card">
+        <mat-progress-bar color="warn" mode="indeterminate" *ngIf="sharedService.LOADING"></mat-progress-bar>
+        <app-single-user *ngFor="let user of sharedService?.users" [user]="user" (userDetails)="userDetails($event[0])"></app-single-user>
+    </section>
+    </div>
+</main>
