@@ -19,6 +19,7 @@
 
   input{
       color: var(--appWhite) !important;
+      background-color: var(--appDarkBg) !important;
   }
  
 
@@ -45,24 +46,6 @@ margin: 0 !important;
     }
 }
 
-
-// .mat-form-field.mat-focused  {
-//     .mat-input-element {
-//         color: red
-//     }
-//     .mat-form-field-label {
-//         color: red
-//     }
-//     .mat-form-field-underline {
-//         background-color: red
-//     }
-//     .mat-form-field-ripple {
-//         background-color: red
-//     }
-//     .mat-form-field-required-marker {
-//         color: red
-//     }
-// }
     }
 
     

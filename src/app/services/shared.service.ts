@@ -8,24 +8,15 @@ import { User } from '../models/models';
   providedIn: 'root'
 })
 export class SharedService {
-  
 
   isHandset = false;
   LOADING = false;
   users: User[]  = [];
 
-  constructor(   @Inject(PLATFORM_ID) private platformId: Object,
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,
   private router: Router,
-  private breakpointObserver: BreakpointObserver,private snackBar: MatSnackBar,) { }
+  private breakpointObserver: BreakpointObserver) { }
 
-  openSnackBar(message: string, action: string, duration: number, panelClass: string) {
-    this.snackBar.open(message, action, {
-      duration,
-      panelClass,
-      verticalPosition: 'top', // 'top' | 'bottom'
-      horizontalPosition: 'end',
-    });
-  }
 
   initBreakPoint(){
     this.breakpointObserver

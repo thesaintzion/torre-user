@@ -18,58 +18,53 @@ export class UserManagementRootComponent implements OnInit {
   public unsubscriber$ = new Subject<void>();
   submitted: boolean = false;
   loading: boolean = false;
-  paramss:any = ''
+  paramss: any = '';
 
-  constructor(private dialog: MatDialog, public sharedService: SharedService, 
-    private activatedRoute: ActivatedRoute, private router: Router, private apiService: ApiService) { }
+  constructor(private dialog: MatDialog, public sharedService: SharedService,
+    private activatedRoute: ActivatedRoute, private router: Router, private apiService: ApiService) {
 
-  public userDetails(user: User): void {  
-  this.dialog.open(UserDetailsDialogComponent, {
-      width: '530px',
-      data: { user},
-      // position: { bottom: '0' },
-      // panelClass: ['animated', 'fadeInUp', 'faster', 'dialog-rounded-none'],
-      //  panelClass: ['animated', 'zoomIn', 'faster', 'dialog-rounded-none'],
+  }
+
+  public userDetails(user: User): void {
+    this.dialog.open(UserDetailsDialogComponent, {
+      width: '600px',
+      data: { user },
+      position: { bottom: '0', },
+      panelClass: ['animated', 'fadeInUp', 'faster', 'dialog-rounded-none'],
     });
   }
 
 
-  handleSearch = (searchVal: any) => {
-      this.sharedService.LOADING = true;
-      const data = searchVal;  
-      this.apiService.searchUser(data).pipe(takeUntil(this.unsubscriber$)).subscribe(
-        res => {
-          this.sharedService.LOADING = false;
-          this.submitted = false;
-          this.loading = false;
-          console.log('Search result', res);
-          this.sharedService.users = res.results;
-        },
-        err => {
-          this.sharedService.LOADING = false;
-          this.submitted = false;
-          this.loading = false;
-        }
-      );
-    
+  handleSearch = (searchVal: any): void => {
+    this.loading = true;
+    const data = searchVal;
+    this.apiService.searchUser(data).pipe(takeUntil(this.unsubscriber$)).subscribe(
+      res => {
+        this.submitted = false;
+        this.loading = false;
+        console.log('Search result', res);
+        this.sharedService.users = res.results;
+      },
+      err => {
+        this.submitted = false;
+        this.loading = false;
+      }
+    );
   }
 
-  handleOnSearch = (searchVal: string) => {
-    const data = {and:[{name:{term: searchVal}}]};
-    this.handleSearch(data)
+  handleOnSearch = (searchVal: string): void => {
+    this.sharedService.LOADING = true;
+    this.handleSearch(searchVal)
   }
-
 
   ngOnInit(): void {
     this.activatedRoute.queryParams
       .subscribe(params => {
-        if(params.q){
-          const data = {and:[{name:{term: params.q}}]};
-          this.handleSearch(data)
+        if (params.q) {
+          this.handleSearch(params.q.trim())
         }
-      
       }
-    );
+      );
   }
 
 }

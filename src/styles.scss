@@ -150,7 +150,7 @@ a:hover {
 }
 
 .backdrop-none {
-  background: transparent !important;
+  background: red !important;
 }
 
 .dialog-rounded-none {
@@ -163,6 +163,7 @@ a:hover {
     border-radius: 0;
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
+    border: .0625rem solid var(--appPrimary)
   }
 }
 
