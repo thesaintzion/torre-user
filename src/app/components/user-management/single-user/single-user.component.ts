@@ -18,12 +18,11 @@ export class SingleUserComponent implements OnInit {
 
   @Output() userDetails: EventEmitter<any> = new EventEmitter();
 
-
   constructor() { }
 
 
-  showUserDetails(user: User): void {
-    this.userDetails.emit([user]);
+  showUserDetails(user: User, skill: string): void {
+    this.userDetails.emit([user, skill]);
   }
 
 

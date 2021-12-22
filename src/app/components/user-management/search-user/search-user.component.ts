@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
 import { SharedService } from 'src/app/services/shared.service';
 import {
@@ -23,18 +21,19 @@ export class SearchUserComponent implements OnInit, OnDestroy {
   @Output() handleOnSearch: EventEmitter<any> = new EventEmitter();
   @ViewChild('input', { static: true })
   inputRef!: ElementRef;
-  isSearching: boolean = false;
+
 
   constructor(private formBuilder: FormBuilder, private apiService: ApiService,
     public sharedService: SharedService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.userSearchForm = this.formBuilder.group({
       name: ['']
     });
-    this.isSearching = false;
   }
 
   ngOnInit(): void {
-
+this.userSearchForm.patchValue({
+  name: this.sharedService.query
+})
     // Debounce search
     fromEvent(this.inputRef.nativeElement, 'keyup').pipe(
       map((event: any) => {

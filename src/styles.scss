@@ -1,12 +1,7 @@
 :root {
-  --appSuccess: #1dce9e;
-  --appWarning: #fdd400;
   --appSuccessLight: #edfbf8;
   --appPrimary: #8bc34a;
-  --appPrimaryLight: #effffb;
   --appGray: #f4f5f6;
-  --appBlue: #19154e;
-  --appBlueLight: rgb(7, 20, 53);
   --appDarkBg: #27292d;
   --appWhite: #ffffff;
 }
@@ -18,75 +13,19 @@
 .rounded-60 {
   border-radius: 60px !important;
 }
-
-// ====== CSS ===== //
-.app-primary-bg {
-  background-color: var(--appPrimary) !important;
-}
-
-.app-primary-color {
-  color: var(--appPrimary) !important;
-}
-
-.app-primary-border {
-  border-color: var(--appPrimary) !important;
-}
-
-.app-primary-light-bg {
-  background-color: var(--appPrimaryLight) !important;
-}
-
-.app-primary-light-color {
-  color: var(--appPrimaryLight) !important;
-}
-
-.app-primary-light-border {
-  border-color: var(--appPrimaryLight) !important;
-}
-
-.app-color-blue {
-  color: var(--appBlueLight) !important;
-}
-
-.app-success-color {
-  color: var(--appSuccess) !important;
-}
-
-.app-success-bg {
-  background-color: var(--appSuccess) !important;
-}
-
-.app-warning-color {
-  color: var(--appWarning) !important;
-}
-
-.app-gray-bg {
-  background-color: var(--appGray) !important;
-}
 html {
   scroll-behavior: smooth;
 }
 
-
-
-
-
-
-// }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   min-height: 100vh;
   scroll-behavior: smooth;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  // background-color: var(--appGray);
   &::before {
     content: "";
     background: #fff;
     color: var(--appPrimary);
-    // opacity: 0.5;
     background-image: url("./assets/img/logo-dark.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -129,102 +68,24 @@ a:hover {
   cursor: pointer;
 }
 
-.mat-dialog-container {
-  .mat-dialog-content {
-    position: relative;
-  }
-  position: relative;
-  display: block;
-}
-
-.dialog-rounded {
-  .mat-dialog-container {
-    border-radius: 15px !important;
-  }
-}
-
-.dialog-no-padding {
-  .mat-dialog-container {
-    padding: 0 !important;
-  }
-}
-
-.backdrop-none {
-  background: red !important;
-}
-
-.dialog-rounded-none {
-  border-radius: none;
-  border-radius: 0;
-  border-top-left-radius: 15px !important;
-  border-top-right-radius: 15px !important;
-  .mat-dialog-container {
-    border-radius: none;
-    border-radius: 0;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
-    border: .0625rem solid var(--appPrimary)
-  }
-}
-
-.mat-menu-content:not(:empty) {
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
 @media (min-width: 768px) {
   ::-webkit-scrollbar,
   ::-webkit-scrollbar-thumb {
     width: 12px;
     background-clip: padding-box;
     height: 10px !important;
-    background-color: var(--appDarkBg) !important;
+    background-color: transparent !important;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--appPrimary) !important;
+    background-color: gray !important;
     border-radius: 50px;
   }
 }
 
 
-
-
-// @media only screen and (max-width: 600px) {
-.menu-screen {
-  position: fixed;
-  max-width: unset !important;
-  // width: 100%;
-  // border: 6px solid red;
-  left: 0;
-  right: 0;
-  width: 1215px;
-  margin: 0 auto;
-}
-
 .mat-card-avatar {
   background-size: cover;
 }
-
-@keyframes skeleton-loading {
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Responsive Styles */
-
-@media screen and (max-width: 767px) {
-  .mb-sm-4 {
-    margin-bottom: 20px !important;
-  }
-  .mb-sm-10 {
-    margin-bottom: 50px !important;
-  }
-}
-
-
-
-
 
 
 .mat-dialog-container {

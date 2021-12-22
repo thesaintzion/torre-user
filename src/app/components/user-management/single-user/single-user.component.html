@@ -9,7 +9,7 @@
 
   <mat-card-content>
     <mat-chip-list aria-label="User skills">
-      <mat-chip color="primary" *ngFor="let skill of user?.skills" (click)="showUserDetails(user)">{{skill?.name}}
+      <mat-chip color="primary" *ngFor="let skill of user?.skills" (click)="showUserDetails(user, skill.name)">{{skill?.name}}
       </mat-chip>
     </mat-chip-list>
   </mat-card-content>

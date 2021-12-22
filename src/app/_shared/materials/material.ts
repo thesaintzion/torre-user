@@ -26,6 +26,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 
+
 @NgModule({
     imports: [
         MatButtonModule,
@@ -66,7 +67,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
         MatProgressSpinnerModule,
         MatSliderModule,
         MatDialogModule,
-        MatListModule,
         MatGridListModule,
         MatExpansionModule,
         MatBadgeModule,
