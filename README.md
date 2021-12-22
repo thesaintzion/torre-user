@@ -2,8 +2,8 @@
 
 ## cd into the root dir
 
-## run npm install
+## run: npm install
 
-## run ng serve --open 
+## run: npm start
 
 ## Visit: http://localhost:4200  

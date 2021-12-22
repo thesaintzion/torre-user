@@ -24,7 +24,7 @@ body {
   scroll-behavior: smooth;
   &::before {
     content: "";
-    background: #fff;
+    background: var(--appDarkBg);
     color: var(--appPrimary);
     background-image: url("./assets/img/logo-dark.png");
     background-repeat: no-repeat;
