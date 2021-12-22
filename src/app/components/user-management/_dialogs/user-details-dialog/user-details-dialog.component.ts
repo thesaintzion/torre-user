@@ -16,15 +16,13 @@ export class UserDetailsDialogComponent implements OnInit {
   public unsubscriber$ = new Subject<void>();
   submitted: boolean = false;
   loading: boolean = true;
-  paramss: any = '';
   isSearching: boolean = false;
   sameSkillUsers: User[] = [];
 
   constructor(
     public _bottomSheetRef: MatBottomSheetRef<UserDetailsDialogComponent>, @Inject(MAT_BOTTOM_SHEET_DATA) public data: { user: User, skill: string },  private apiService: ApiService) { }
 
-
-    close(){
+    close(): void{
       this._bottomSheetRef.dismiss();
     }
 
@@ -35,17 +33,19 @@ export class UserDetailsDialogComponent implements OnInit {
       res => {
         this.submitted = false;
         this.loading = false;
-        this.isSearching = false;
-        console.log('Same skill user', res);
         this.sameSkillUsers = res.results;
       },
       err => {
         this.submitted = false;
         this.loading = false;
-        this.isSearching = false;
       }
     );
     
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscriber$.next();
+    this.unsubscriber$.unsubscribe();
   }
 
 }

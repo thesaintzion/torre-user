@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,29 +14,21 @@ import { UserDetailsDialogComponent } from '../_dialogs/user-details-dialog/user
   templateUrl: './user-management-root.component.html',
   styleUrls: ['./user-management-root.component.scss']
 })
-export class UserManagementRootComponent implements OnInit {
+export class UserManagementRootComponent implements OnInit, OnDestroy {
 
   public unsubscriber$ = new Subject<void>();
   submitted: boolean = false;
   loading: boolean = true;
   paramss: any = '';
-  isSearching: boolean = false;
-  query: string = '';
+  
 
-  constructor(private dialog: MatDialog, private _bottomSheet: MatBottomSheet, public sharedService: SharedService,
+
+  constructor(private _bottomSheet: MatBottomSheet, public sharedService: SharedService,
     private activatedRoute: ActivatedRoute, private router: Router, private apiService: ApiService) {
 
   }
 
   public userDetails(user: User, skill: string): void {
-    // this.dialog.open(UserDetailsDialogComponent, {
-    //   width: '600px',
-    //   height: '500px',
-    //   data: { user , skill},
-    //   position: { bottom: '0', },
-    //   panelClass: ['animated', 'fadeInUp', 'faster', 'dialog-rounded-none'],
-    // });
-
     this._bottomSheet.open(UserDetailsDialogComponent, {  
       data: { user , skill},});
   }
@@ -49,14 +41,11 @@ export class UserManagementRootComponent implements OnInit {
       res => {
         this.submitted = false;
         this.loading = false;
-        this.isSearching = false;
-        console.log('Search result', res);
         this.sharedService.users = res.results;
       },
       err => {
         this.submitted = false;
         this.loading = false;
-        this.isSearching = false;
       }
     );
   }
@@ -74,6 +63,10 @@ export class UserManagementRootComponent implements OnInit {
         }
       }
       );
+  }
+  ngOnDestroy(): void {
+    this.unsubscriber$.next();
+    this.unsubscriber$.unsubscribe();
   }
 
 }
