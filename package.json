@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node ./node_modules/@angular/cli/bin/ng serve --port=4200 --open",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
