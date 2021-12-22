@@ -18,7 +18,7 @@ export class UserManagementRootComponent implements OnInit, OnDestroy {
 
   public unsubscriber$ = new Subject<void>();
   submitted: boolean = false;
-  loading: boolean = true;
+  loading: boolean = false;
   paramss: any = '';
   
 
