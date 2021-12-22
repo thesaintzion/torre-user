@@ -19,7 +19,7 @@ export class UserManagementRootComponent implements OnInit, OnDestroy {
   public unsubscriber$ = new Subject<void>();
   submitted: boolean = false;
   loading: boolean = false;
-  paramss: any = '';
+  searched: boolean = false 
   
 
 
@@ -41,6 +41,7 @@ export class UserManagementRootComponent implements OnInit, OnDestroy {
       res => {
         this.submitted = false;
         this.loading = false;
+        this.searched = true;
         this.sharedService.users = res.results;
       },
       err => {
